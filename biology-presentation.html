@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生物學簡報</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+    }
+    .presentation-container {
+      width: 90%;
+      max-width: 800px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: #ffffff;
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      padding: 20px;
+      text-align: center;
+    }
+    .slide.active {
+      display: block;
+    }
+    .slide h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .slide p {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #333;
+    }
+    .nav-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .nav-buttons button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="presentation-container">
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <h2>1. 細胞是生命的基本單位</h2>
+      <p>所有生物都是由細胞組成的，細胞是生命活動的基本單位。</p>
+    </div>
+    <!-- Slide 2 -->
+    <div class="slide">
+      <h2>2. 遺傳信息儲存在 DNA 中</h2>
+      <p>DNA 是攜帶遺傳信息的分子，負責指導生物的生長、發育和繁殖。</p>
+    </div>
+    <!-- Slide 3 -->
+    <div class="slide">
+      <h2>3. 基因是遺傳的基本單位</h2>
+      <p>基因是 DNA 的特定片段，包含指導蛋白質合成的指令。</p>
+    </div>
+    <!-- Slide 4 -->
+    <div class="slide">
+      <h2>4. 進化驅動生物多樣性</h2>
+      <p>通過自然選擇，物種逐漸適應環境，形成了地球上的生物多樣性。</p>
+    </div>
+    <!-- Slide 5 -->
+    <div class="slide">
+      <h2>5. 能量流動與生物代謝</h2>
+      <p>生物通過攝取食物或光合作用獲取能量，並通過代謝維持生命活動。</p>
+    </div>
+    <!-- Slide 6 -->
+    <div class="slide">
+      <h2>6. 生態系統的相互作用</h2>
+      <p>生物之間以及生物與環境之間相互作用，維持生態系統的平衡。</p>
+    </div>
+    <!-- Slide 7 -->
+    <div class="slide">
+      <h2>7. 同化與異化作用</h2>
+      <p>生物進行同化作用以合成有機物，並通過異化作用分解有機物以釋放能量。</p>
+    </div>
+    <!-- Slide 8 -->
+    <div class="slide">
+      <h2>8. 生物體內的信號傳遞</h2>
+      <p>細胞通過化學信號和電信號進行交流，協調生物體內的活動。</p>
+    </div>
+    <!-- Slide 9 -->
+    <div class="slide">
+      <h2>9. 生物的適應與環境</h2>
+      <p>生物通過適應機制應對環境挑戰，如耐旱植物和極地動物的特化。</p>
+    </div>
+    <!-- Slide 10 -->
+    <div class="slide">
+      <h2>10. 生物技術的應用</h2>
+      <p>現代生物技術（如基因工程）正在改變醫學、農業和環境科學。</p>
+    </div>
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <button id="prevBtn" disabled>上一頁</button>
+      <button id="nextBtn">下一頁</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentSlide = 0;
+
+    function updateSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === slides.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide(currentSlide);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide(currentSlide);
+      }
+    });
+
+    // Initialize the first slide
+    updateSlide(currentSlide);
+  </script>
+</body>
+</html>
